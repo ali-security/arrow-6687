@@ -52,7 +52,7 @@ env:
 jobs:
   ubuntu:
     name: AMD64 Ubuntu ${{ matrix.ubuntu }} R ${{ matrix.r }} Force-Tests ${{ matrix.force-tests }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 75
     strategy:
@@ -83,7 +83,7 @@ jobs:
       - name: Check pkgdown reference sections
         run: ci/scripts/r_pkgdown_check.sh
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -120,7 +120,7 @@ jobs:
 
   bundled:
     name: "${{ matrix.config.org }}/${{ matrix.config.image }}:${{ matrix.config.tag }}"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     strategy:
@@ -140,7 +140,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery

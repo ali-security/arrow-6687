@@ -57,7 +57,7 @@ jobs:
 
   ubuntu:
     name: AMD64 Ubuntu ${{ matrix.ubuntu }} GLib & Ruby
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     strategy:
@@ -80,7 +80,7 @@ jobs:
           key: ubuntu-${{ matrix.ubuntu }}-ruby-${{ hashFiles('cpp/**') }}
           restore-keys: ubuntu-${{ matrix.ubuntu }}-ruby-
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -110,7 +110,7 @@ jobs:
 
   macos:
     name: AMD64 macOS 12 GLib & Ruby
-    runs-on: macos-latest
+    runs-on: macos-12
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     env:

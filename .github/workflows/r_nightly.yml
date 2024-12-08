@@ -32,9 +32,7 @@ on:
         required: false
         default: 14
 
-  schedule:
     #Crossbow packaging runs at 0 8 * * *
-    - cron: '0 14 * * *'
 
 permissions:
   contents: read
@@ -42,7 +40,7 @@ permissions:
 jobs:
   upload:
     if: github.repository == 'apache/arrow'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout Arrow
         uses: actions/checkout@v3
@@ -60,7 +58,7 @@ jobs:
           repository: ursacomputing/crossbow
           ref: master
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           cache: 'pip'
           python-version: 3.8

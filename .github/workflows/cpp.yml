@@ -55,7 +55,7 @@ env:
 jobs:
   docker:
     name: ${{ matrix.title }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 75
     strategy:
@@ -84,7 +84,7 @@ jobs:
           key: ${{ matrix.image }}-${{ hashFiles('cpp/**') }}
           restore-keys: ${{ matrix.image }}-
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -107,7 +107,7 @@ jobs:
 
   build-example:
     name: C++ Minimal Build Example
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 45
     steps:
@@ -127,7 +127,7 @@ jobs:
 
   macos:
     name: AMD64 macOS 12 C++
-    runs-on: macos-latest
+    runs-on: macos-12
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 75
     env:

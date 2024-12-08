@@ -40,7 +40,7 @@ jobs:
 
   ubuntu:
     name: AMD64 Ubuntu 18.04 C# ${{ matrix.dotnet }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 15
     strategy:
@@ -95,7 +95,7 @@ jobs:
 
   macos:
     name: AMD64 macOS 11 C# ${{ matrix.dotnet }}
-    runs-on: macos-latest
+    runs-on: macos-12
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 15
     strategy:

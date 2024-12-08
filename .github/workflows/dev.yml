@@ -33,7 +33,7 @@ jobs:
 
   lint:
     name: Lint C++, Python, R, Docker, RAT
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     steps:
       - name: Checkout Arrow
@@ -41,7 +41,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -71,8 +71,8 @@ jobs:
       fail-fast: false
       matrix:
         runs-on:
-          - macos-latest
-          - ubuntu-latest
+          - macos-12
+          - ubuntu-22.04
     env:
       GIT_AUTHOR_NAME: Github Actions
       GIT_AUTHOR_EMAIL: github@actions
@@ -84,7 +84,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: '3.8'
       - name: Install Ruby

@@ -42,7 +42,7 @@ jobs:
 
   docker:
     name: AMD64 Debian 11 NodeJS 16
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     steps:
@@ -51,7 +51,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -74,7 +74,7 @@ jobs:
 
   macos:
     name: AMD64 macOS 11 NodeJS ${{ matrix.node }}
-    runs-on: macos-latest
+    runs-on: macos-12
     if: github.event_name == 'push'
     timeout-minutes: 60
     strategy:
@@ -99,7 +99,7 @@ jobs:
 
   windows:
     name: AMD64 Windows NodeJS ${{ matrix.node }}
-    runs-on: windows-latest
+    runs-on: windows-2022
     if: github.event_name == 'push'
     strategy:
       fail-fast: false

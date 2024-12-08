@@ -43,7 +43,7 @@ jobs:
 
   docker:
     name: AMD64 Debian 11 Go ${{ matrix.go }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     strategy:
@@ -65,7 +65,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: '3.10'
       - name: Setup Archery
@@ -102,7 +102,7 @@ jobs:
 
   docker_cgo:
     name: AMD64 Debian 11 GO ${{ matrix.go }} - CGO
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 15
     strategy:
@@ -124,7 +124,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -145,7 +145,7 @@ jobs:
 
   docker_cgo_python:
     name: AMD64 Debian 11 GO ${{ matrix.go }} - CGO Python
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 15
     strategy:
@@ -166,7 +166,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: 3.8
       - name: Setup Archery
@@ -221,7 +221,7 @@ jobs:
 
   macos:
     name: AMD64 macOS 11 Go ${{ matrix.go }}
-    runs-on: macos-latest
+    runs-on: macos-12
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     strategy:
@@ -255,7 +255,7 @@ jobs:
         run: ci/scripts/go_test.sh $(pwd)
       - name: Setup Python
         if: success() && github.event_name == 'push' && github.repository == 'apache/arrow'
-        uses: actions/setup-python@v4
+        uses: MatteoH2O1999/setup-python@v4
         with:
           python-version: '3.10'
       - name: Run Benchmarks
@@ -273,7 +273,7 @@ jobs:
 
   macos-cgo:
     name: AMD64 macOS 11 Go ${{ matrix.go }} - CGO
-    runs-on: macos-latest
+    runs-on: macos-12
     if: ${{ !contains(github.event.pull_request.title, 'WIP') }}
     timeout-minutes: 60
     strategy:
